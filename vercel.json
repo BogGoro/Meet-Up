@@ -1,5 +1,6 @@
 {
 	"version": 2,
+	"framework": "sveltekit",
 	"builds": [
 		{
 			"src": "api/index.py",
@@ -9,7 +10,7 @@
 			"src": "package.json",
 			"use": "@vercel/static-build",
 			"config": {
-				"distDir": ".svelte-kit"
+				"distDir": "build"
 			}
 		}
 	],
@@ -20,7 +21,7 @@
 		},
 		{
 			"src": "/(.*)",
-			"dest": "/.svelte-kit/$1"
+			"dest": "/build/$1"
 		}
 	]
 }
