@@ -9,7 +9,7 @@
 			"src": "package.json",
 			"use": "@vercel/static-build",
 			"config": {
-				"distDir": "build"
+				"distDir": ".svelte-kit"
 			}
 		}
 	],
@@ -20,7 +20,7 @@
 		},
 		{
 			"src": "/(.*)",
-			"dest": "/build/$1"
+			"dest": "/.svelte-kit/$1"
 		}
 	]
 }
