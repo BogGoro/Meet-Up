@@ -1,3 +1,9 @@
+# Python
+*.log
+*.pyc
+__pycache__
+
+#svelte
 node_modules
 
 # Output
@@ -10,7 +16,13 @@ node_modules
 .DS_Store
 Thumbs.db
 
-# Env
+# Environments
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 .env
 .env.*
 !.env.example

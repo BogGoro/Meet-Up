@@ -32,8 +32,7 @@
 	img {
 		margin-top: 8vh;
 		margin-bottom: 15vh;
-		max-width: 64rem;
-		max-width: 100%;
+		max-width: 60rem;
 	}
 
 	h1 {
