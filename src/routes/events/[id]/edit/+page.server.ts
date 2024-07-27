@@ -1,15 +1,22 @@
-import { supabase } from '$lib/supabaseClient';
 import type { Event } from '$lib/types/event';
 
 export const load = async ({ params }) => {
-	const { data: events } = await supabase.from('events').select().eq('id', params.id);
-	if (!events || events.length === 0) {
-		// Handle the case where no course is found for the ID
-		return { error: 'Event not found', event: null };
+	const { id } = params;
+
+	try {
+		const response = await fetch(`https://meet-up-eight-navy.vercel.app/api/events/${id}`);
+		if (!response.ok) {
+			throw new Error('Failed to fetch event');
+		}
+
+		const event: Event = await response.json();
+		return {
+			event
+		};
+	} catch (error) {
+		console.error('Error fetching event:', error);
+		return {
+			event: null
+		};
 	}
-	const event = events[0] as Event;
-	return {
-		error: null,
-		event: event
-	};
 };

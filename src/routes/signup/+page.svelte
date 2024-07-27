@@ -1,6 +1,6 @@
 <svelte:head>
-	<title>Login</title>
-	<meta name="login" />
+	<title>Signup</title>
+	<meta name="description" content="Signup page" />
 </svelte:head>
 
 <div class="text-column">

@@ -24,7 +24,7 @@
 		{#each events as event}
 			<div>
 				<a href="/events/{event.id}">
-					{event.title} - {event.place} - {event.date} - {event.time}
+					{event.title} - {event.address} - {event.date} - {event.time}
 				</a>
 			</div>
 		{/each}
