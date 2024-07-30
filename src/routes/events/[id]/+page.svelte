@@ -15,8 +15,14 @@
 	<meta name="description" content={event?.description || 'Event does not exist in the database'} />
 </svelte:head>
 
-<h1>Here will be single event page</h1>
-<a href="/events/{event?.id}/edit">
-	<button> Edit event </button>
-</a>
-<div>{event?.title} - {event?.description} - {event?.address} - {event?.date} - {event?.time}</div>
+{#if event}
+	<h1>Here will be single event page</h1>
+	<a href="/events/{event.id}/edit">
+		<button> Edit event </button>
+	</a>
+	<div>
+		{event.title} - {event.description} - {event.address} - {event.date} - {event.time}
+	</div>
+{:else}
+	<h1>Event not found</h1>
+{/if}

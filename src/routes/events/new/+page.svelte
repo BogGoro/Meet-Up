@@ -1,24 +1,23 @@
 <script lang="ts">
 	let title = '';
-	let place = '';
+	let address = '';
 	let time = '';
 	let date = '';
-	let brief = '';
-	let text = '';
+	let description = '';
 	let errorMessage = '';
 
 	const handleSubmit = async (event: SubmitEvent) => {
 		event.preventDefault();
 
 		// Validation check
-		if (!title || !place || !date || !brief) {
+		if (!title || !address || !date || !time || !description) {
 			errorMessage = 'Please fill in all required fields.';
 			return;
 		}
 
 		errorMessage = '';
 
-		const url = `/api/event`;
+		const url = `/api/events/`;
 
 		const response = await fetch(url, {
 			method: 'POST',
@@ -28,10 +27,10 @@
 			},
 			body: JSON.stringify({
 				title: title,
-				place: place,
-				text: text,
-				brief: brief,
-				time: date + ' ' + time
+				date: date,
+				time: time,
+				address: address,
+				description: description
 			})
 		});
 
@@ -57,13 +56,12 @@
 			<p class="error-message">{errorMessage}</p>
 		{/if}
 		<input type="text" bind:value={title} placeholder="Title" />
-		<input type="text" bind:value={place} placeholder="Place" />
+		<input type="text" bind:value={address} placeholder="Address" />
 		<div class="date--container">
 			<input type="date" bind:value={date} />
 			<input type="time" bind:value={time} />
 		</div>
-		<textarea bind:value={brief} placeholder="Brief info"></textarea>
-		<textarea bind:value={text} placeholder="Full description"></textarea>
+		<textarea bind:value={description} placeholder="Description"></textarea>
 		<div class="button-container">
 			<button type="submit">Create</button>
 			<button type="button" class="secondary-button" on:click={() => window.history.back()}

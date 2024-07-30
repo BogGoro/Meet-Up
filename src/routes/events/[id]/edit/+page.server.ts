@@ -4,7 +4,7 @@ export const load = async ({ params }) => {
 	const { id } = params;
 
 	try {
-		const response = await fetch(`https://meet-up-eight-navy.vercel.app/api/events/${id}`);
+		const response = await fetch(`http://localhost:8000/api/events/${id}`);
 		if (!response.ok) {
 			throw new Error('Failed to fetch event');
 		}

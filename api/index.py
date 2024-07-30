@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from contextlib import asynccontextmanager
 from sqlalchemy.ext.asyncio import AsyncSession
 from .database import SessionLocal, engine, init_db
 from . import crud
@@ -6,7 +7,13 @@ from pydantic import BaseModel
 from datetime import date, time, datetime
 from typing import List
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await init_db()
+    yield
+    print('End')
+
+app = FastAPI(lifespan=lifespan)
 
 async def get_db():
     async with SessionLocal() as session:
@@ -29,10 +36,6 @@ class EventRead(BaseModel):
     time: time
     authorID: int
     created_at: datetime
-
-@app.on_event("startup")
-async def on_startup():
-    await init_db()
 
 @app.post("/api/events/", response_model=EventCreate)
 async def create_event(event: EventCreate, db: AsyncSession = Depends(get_db)):
