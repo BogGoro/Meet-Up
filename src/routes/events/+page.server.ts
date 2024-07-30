@@ -2,7 +2,7 @@ import type { Event } from '$lib/types/event';
 
 export async function load() {
 	try {
-		const response = await fetch('http://localhost:8000/api/events');
+		const response = await fetch('https://meet-up-backend.vercel.app/events');
 		if (!response.ok) {
 			throw new Error('Failed to fetch events');
 		}

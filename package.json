@@ -2,9 +2,7 @@
 	"name": "meet-up",
 	"version": "0.0.1",
 	"scripts": {
-		"fastapi-dev": "call venv/Scripts/activate && pip install -r requirements.txt && python -m uvicorn api.index:app --reload",
-		"vite-dev": "vite dev",
-		"dev": "concurrently \"npm run vite-dev\" \"npm run fastapi-dev\"",
+		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -34,9 +32,5 @@
 		"vite": "^5.0.3",
 		"vitest": "^1.2.0"
 	},
-	"type": "module",
-	"dependencies": {
-		"@supabase/supabase-js": "^2.44.3",
-		"concurrently": "^8.2.2"
-	}
+	"type": "module"
 }
